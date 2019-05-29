@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+	  <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="dcoders" content="dcoders & dcodersiot">
+	  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+     
+       
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> 
+	  
+
+      <title>Device control Panel</title>
+	 <style>      
+         header{
+        padding: 5px;
+        color: black;
+         width:100%;
+        position:relative;                                     
+        height:100px;
+    
+         }
+	.center { 
+		height: 400px;
+		width: 650px;
+		background: #BBDEFB;
+		position: fixed;
+		top: 50%;
+		left: 40%;
+		margin-top: -170px;
+		margin-left: -200px;
+	}
+	
+	.form{
+		padding-top: 30px;
+		padding-right: 30px;
+		padding-bottom: 30px;
+		padding-left: 30px;
+	}
+
+	.button {
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 16px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		cursor: pointer;
+	}
+
+	.button1 {
+		background-color: white; 
+		color: black; 
+	}
+
+	.button1:hover {
+		background-color: #4CAF50;
+		color: white;
+	}
+
+	.button3 {
+		background-color: white; 
+		color: black; 
+	}
+
+	.button3:hover {
+		background-color: #F44336;
+		color: white;
+	}
+
+	.ip{
+		background-color: #fffff; /* Green */
+		border: none;
+		color: black;
+		padding: 16px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+	}
+
+	.footer{
+		background:black;
+		width:100%;
+		height:100px;
+		position:absolute;
+		bottom:0;
+		left:0;
+	}
+    body {
+        margin: 0px;
+      }
+        h1 {
+  font-size: 40px;
+}
+	</style>
+                                              
+   </head>
+  <body style="background-color:rgb(4, 200, 245);">
+   <center>
+   <header>
+  <h1><u><b>Device Control Panel</b></u></h1>
+</header>
+   </center>
+   
+   <div class="center" style="height:100%;">
+	<div align="center" class="form">
+              <form action="" method="get">
+              <p id="demo"></p>
+                          <br><br>
+ 
+              <button type="button" id="D1-on" class="button button1" onclick="my1()">D1 ON</button>
+			  <button type="button" id="D1-off" class="button button3" onclick="my2()">D1 OFF</button>
+			  <br>
+			  <button type="button" id="D2-on" class="button button1" onclick="my3()">D2 ON</button>
+			  <button type="button" id="D2-off" class="button button3" onclick="my4()">D2 OFF</button>
+			  <br>
+        </form>
+		<br><br>
+	 </div>
+	</div>
+
+            <div align="right">
+               <p id="ko"></p>
+        </div>
+	<footer class="footer">
+		<center>
+			<h4 style="font-family: Helvetica;color: white;" >&copy; 2019 | <a href="" style="font-family: Helvetica;color: white;">dcoders</a> | <a href="" style="font-family: Helvetica;color: white;">dcoders_iot</a> </h4>
+		</center>
+	</footer>
+<p>Device1</p>
+<br>
+<img id="myImage1" src="1.png" style="width:50px">
+<br>
+<p>Device2</p>
+<br>
+<img id="myImage" src="2.jpg" style="width:50px">
+
+    </body>
+    
+	<script>
+		document.getElementById('D1-on').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=1&status=on";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+		
+		document.getElementById('D1-off').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=1&status=off";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+		
+		
+		document.getElementById('D2-on').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=2&status=on";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+		
+		document.getElementById('D2-off').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=2&status=off";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+		
+                function my1() {
+   var status;
+   var fun;
+  while(document.getElementById('D1-on')) {
+    status="1.png";
+    fun="D1 Connected";
+    break;
+  }
+  document.getElementById('myImage1').src= status;
+  document.getElementById("demo").innerHTML = fun;
+  document.getElementById('D1-on').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=1&status=on";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+		
+}  
+                function my3() {
+   var status;
+   var fun;
+  while(document.getElementById('D2-on')) {
+    status="1.png";
+    fun="D2 Connected";
+   break;
+  } 
+  document.getElementById('myImage1').src= status;
+  document.getElementById("demo").innerHTML = fun;
+  document.getElementById('D2-on').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=2&status=on";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+} 
+                function my2() {
+   var status;
+   var fun;
+  while (document.getElementById('D1-off')) {
+    status="2.jpg";
+    fun="D1 Disconnected";
+    break;
+  } 
+  document.getElementById('myImage').src= status;
+  document.getElementById("demo").innerHTML = fun;
+  document.getElementById('D1-off').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=1&status=off";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+} 
+                function my4() {
+   var status;
+   var fun;
+  while (document.getElementById('D2-off')) {
+    status="2.jpg";
+    fun="D2 Disconnected";
+    break;
+  } 
+  document.getElementById('myImage').src= status;
+  document.getElementById("demo").innerHTML = fun;
+  document.getElementById('D2-off').addEventListener('click', function() {
+				var url = "https://dcodersiot.000webhostapp.com/api/led/update.php?id=2&status=off";
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+		});
+}  
+window.onload = function() {
+            loaddata();
+        };
+		function loaddata(){
+				var url = "https://dcodersiot.000webhostapp.com/api/led/read_all1.php";
+				$.getJSON(url, function(data) {
+                    var val= data;
+                  var hid=(data['led'][(Object.keys(data['led']).length)-1]['status']);
+                   document.getElementById("ko").innerHTML = hid;
+					console.log(data['led'][(Object.keys(data['led']).length)-1]['status']);
+				});
+                    }
+        window.setInterval(function(){
+        loaddata();
+            }, 1000);
+	                   
+	</script>
+</html>
